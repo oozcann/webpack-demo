@@ -9,7 +9,7 @@
 4.Webpack npm aracılığıyla kurulur.
 ##### npm install webpack webpack-cli --save-dev
 5.src dizini altında index.js dosyası oluşturulur. index.js girdi dosyamızdır.
-![img_1.png](img_1.png)
+![img_1.png](img_1.png)  
 6.webpack.config.js dosyası oluşturulur. Bu dosya webpack ile ilgili konfigürasyonları yaptığımız dosyadır.
 ##### config dosyasındaki ayarlamaların açıklamalarını dosya içinde bulabilirsiniz.
 ## BABEL KURULUMU
@@ -20,7 +20,7 @@
 Detaylı Babel kurulumu : 
 ##### https://babeljs.io/setup#installation
 2.preset belirlemek için .babelrc dosyası ana dizinde oluşturulur.
-![img_2.png](img_2.png)
+![img_2.png](img_2.png)  
 3."presets": ["@babel/preset-env"] tanımlanır. (ES2015+ syntax'ı için). 
 Diğer presetler için : 
 ##### https://babeljs.io/docs/presets
