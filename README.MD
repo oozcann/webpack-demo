@@ -24,3 +24,11 @@ Detaylı Babel kurulumu :
 3."presets": ["@babel/preset-env"] tanımlanır. (ES2015+ syntax'ı için). 
 Diğer presetler için : 
 ##### https://babeljs.io/docs/presets
+
+
+## ÖNEMLİ BİLGİLER
+***
+##### 1.dist içindeki style dosyaları production mode'da iken oluşur. 
+const defStyle = [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader'];  
+Eğer mode production ise MiniCssExtractPlugin çalışır ve asset içinde bu css dosyaları oluşur.  
+Ancak development mode ise bu sefer style-loader çalışır. Bu da css'i direkt olarak index içine gömer.

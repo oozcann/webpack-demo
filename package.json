@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --open",
-    "start": "webpack serve --progress --mode development --config webpack.config.js"
+    "dev": "webpack serve --progress --mode development --config webpack.config.js --open",
+    "prod": "webpack serve --progress --mode production --config webpack.config.js --open"
+
   },
   "keywords": [],
   "author": "Onur Ozcan",
