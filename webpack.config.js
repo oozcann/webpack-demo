@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development', // development ya da production olabilir. // dev mode'da çalıştırdığını belirtirsin, ya da prod yaparsın. if koşulu ile olabilir.
@@ -21,21 +22,37 @@ module.exports = {
         },
         {
             test: /\.css$/i,
-            use: ["style-loader", "css-loader"] // css dosyalarında verilen sıraya göre bu loader'lar kullanılır.
+            // use: ["style-loader", "css-loader"] // css dosyalarında verilen sıraya göre bu loader'lar kullanılır.
+            use: [
+                MiniCssExtractPlugin.loader,
+                "css-loader"
+            ]
         },
         {
             test: /\.scss$/i,
-            use: ["style-loader", "css-loader", "sass-loader"] // scss dosyalarında verilen sıraya göre bu loader'lar kullanılır.
+            // use: ["style-loader", "css-loader", "sass-loader"] // scss dosyalarında verilen sıraya göre bu loader'lar kullanılır.
+            use: [
+                {
+                    loader: MiniCssExtractPlugin.loader
+                  },
+                "css-loader",
+                "sass-loader"
+            ]
         }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({ // dist içine index.html dosyasını oluşturuyor.
         title: 'Development'
+    }),
+    new MiniCssExtractPlugin({ // dist içine scss,css gibi dosyaları minimize eder ve verilen isimle kaydeder.
+        filename: 'asset/styles/[name].[contenthash].css',
+        ignoreOrder: true,
+        chunkFilename: '[id].css'
     })
   ],
   output: {
     filename: 'bundle.js', // output dosyaları bundle.js adında dosyaya yazar.
     path: path.resolve(__dirname, 'dist'), // dev server'dakinden farklı olarak build yapmadığın sürece bunun içindeki dosyalar değişmez.
-  },
+  }
 };
