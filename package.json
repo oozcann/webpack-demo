@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve --progress --mode development --config webpack.config.js --open",
-    "prod": "webpack serve --progress --mode production --config webpack.config.js --open"
+    "prod": "webpack serve --progress --mode production --config webpack.config.js --open",
+    "start": "webpack-dev-server --mode development --open"
 
   },
   "keywords": [],
