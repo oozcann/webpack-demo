@@ -10,7 +10,11 @@ module.exports = (env, options) => {
   console.log(options.mode);
   return {
       mode: devMode ? 'development' : 'production', // development ya da production olabilir. // dev mode'da çalıştırdığını belirtirsin, ya da prod yaparsın. if koşulu ile olabilir.
-      entry: './src/index.js', // temeldeki dosya budur. bunun içinden çalışır.
+      // entry: './src/index.js', // temeldeki dosya budur. bunun içinden çalışır.
+      entry: {
+        index: {import: './src/index.js', dependOn: 'shared'},
+        shared: 'lodash'
+      },
       devServer: {
         static: './dist', // dev serverda dist'e kaydeder ve otomatik yenilenince ekranda değişiklik görünür.
       },
@@ -48,8 +52,13 @@ module.exports = (env, options) => {
             chunkFilename: '[id].css'
         })
       ],
+      optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+      },
       output: {
-        filename: 'bundle.js', // output dosyaları bundle.js adında dosyaya yazar.
+        filename: '[name].bundle.js', // output dosyaları bundle.js adında dosyaya yazar.
         path: path.resolve(__dirname, 'dist'), // dev server'dakinden farklı olarak build yapmadığın sürece bunun içindeki dosyalar değişmez.
       }
   }
